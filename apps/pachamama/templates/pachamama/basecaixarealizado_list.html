@@ -1,0 +1,82 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+  <a class="navbar-brand" href="#">Pachamama</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" href="{% url 'fluxo_caixa_pachamama' %}">Fluxo de Caixa</a>
+      <a class="nav-item nav-link" href="">Demonstração de Resultado</a>
+      <a class="nav-item nav-link" href="">Demonstração de Resultado</a>
+    </div>
+  </div>
+</nav>
+<br>
+<h2>Base</h2>
+<br>
+<p>
+    <a class="btn btn-info" href="{% url 'fluxo_caixa_pachamama' %}" role="button">Voltar</a>
+</p>
+<br>
+
+<form>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="inputState">Período</label>
+          <select id="inputState" class="form-control">
+            <option>Janeiro</option>
+            <option>Fevereiro</option>
+            <option>Março</option>
+            <option>Abril</option>
+            <option>Maio</option>
+            <option>Junho</option>
+            <option>Julho</option>
+            <option>Agosto</option>
+            <option>Setembro</option>
+            <option>Outubro</option>
+            <option>Novembro</option>
+            <option>Dezembro</option>
+          </select>
+        </div>
+</form>
+<br>
+<br>
+     <table class="table" id="book-table">
+        <thead>
+          <tr>
+            <th>Situação</th>
+            <th>Classificação Caixa</th>
+            <th>Dia</th>
+            <th>Mês</th>
+            <th>Ano</th>
+            <th>Data</th>
+            <th>Cliente</th>
+            <th>Valor</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          {% for basecaixarealizado in object_list %}
+            <tr>
+              <td>{{ basecaixarealizado.situacao }}</td>
+              <td>{{ basecaixarealizado.classificacao_caixa }}</td>
+              <td>{{ basecaixarealizado.dia_pagamento }}</td>
+              <td>{{ basecaixarealizado.mes_pagamento }}</td>
+              <td>{{ basecaixarealizado.ano_pagamento }}</td>
+              <td>{{ basecaixarealizado.data }}</td>
+              <td>{{ basecaixarealizado.cliente }}</td>
+              <td>{{ basecaixarealizado.valor }}</td>
+            </tr>
+          {% empty %}
+            <tr>
+              <td colspan="7" class="text-center bg-warning">No book</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+{% endblock content %}

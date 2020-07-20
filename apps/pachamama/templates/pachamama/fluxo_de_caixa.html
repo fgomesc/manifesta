@@ -46,270 +46,119 @@
 
     <tr class="table-primary">
       <th scope="row">Total Receita</th>
-      <td>{{ jan_total_receita }}</td>
-      <td>{{ fev_total_receita }}</td>
-      <td>{{ mar_total_receita }}</td>
-      <td>{{ abr_total_receita }}</td>
-      <td>{{ mai_total_receita }}</td>
-      <td>{{ jun_total_receita }}</td>
-      <td>{{ jul_total_receita }}</td>
-      <td>{{ ago_total_receita }}</td>
-      <td>{{ set_total_receita }}</td>
-      <td>{{ out_total_receita }}</td>
-      <td>{{ nov_total_receita }}</td>
-      <td>{{ dez_total_receita }}</td>
+        {% for total_receita_realizado in total_receita_realizado %}
+            <td> {{ total_receita_realizado }} </td>
+        {% endfor %}
       <td>{{ total_receita }}</td>
     </tr>
     <tr>
       <td><a href="{% url 'list_entrada_cartao' %}">(+) Cartão</a></td>
-      <td>{{ jan_entrada_cartao }}</td>
-      <td>{{ fev_entrada_cartao }}</td>
-      <td>{{ mar_entrada_cartao }}</td>
-      <td>{{ abr_entrada_cartao }}</td>
-      <td>{{ mai_entrada_cartao }}</td>
-      <td>{{ jun_entrada_cartao }}</td>
-      <td>{{ jul_entrada_cartao }}</td>
-      <td>{{ ago_entrada_cartao }}</td>
-      <td>{{ set_entrada_cartao }}</td>
-      <td>{{ out_entrada_cartao }}</td>
-      <td>{{ nov_entrada_cartao }}</td>
-      <td>{{ dez_entrada_cartao }}</td>
-      <td>{{ total_receita_cartao }}</td>
+        {% for entrada_cartao_realizado in entrada_cartao_realizado %}
+            <td> {{ entrada_cartao_realizado }} </td>
+        {% endfor %}
+      <td></td>
     </tr>
     <tr>
       <td><a href="{% url 'list_entrada_boleto' %}">(+) Boleto</a></td>
-      <td>{{ jan_entrada_boleto }}</td>
-      <td>{{ fev_entrada_boleto }}</td>
-      <td>{{ mar_entrada_boleto }}</td>
-      <td>{{ abr_entrada_boleto }}</td>
-      <td>{{ mai_entrada_boleto }}</td>
-      <td>{{ jun_entrada_boleto }}</td>
-      <td>{{ jul_entrada_boleto }}</td>
-      <td>{{ ago_entrada_boleto }}</td>
-      <td>{{ set_entrada_boleto }}</td>
-      <td>{{ out_entrada_boleto }}</td>
-      <td>{{ nov_entrada_boleto }}</td>
-      <td>{{ dez_entrada_boleto }}</td>
-      <td>{{ total_receita_boleto }}</td>
+        {% for entrada_boleto_realizado in entrada_boleto_realizado %}
+            <td> {{ entrada_boleto_realizado }} </td>
+        {% endfor %}
+      <td>-</td>
     </tr>
     <tr>
       <td><a href="{% url 'list_entrada_rendimentos' %}">(+) Rendimentos</a></td>
-      <td>{{ jan_entrada_rendimentos }}</td>
-      <td>{{ fev_entrada_rendimentos }}</td>
-      <td>{{ mar_entrada_rendimentos }}</td>
-      <td>{{ abr_entrada_rendimentos }}</td>
-      <td>{{ mai_entrada_rendimentos }}</td>
-      <td>{{ jun_entrada_rendimentos }}</td>
-      <td>{{ jul_entrada_rendimentos }}</td>
-      <td>{{ ago_entrada_rendimentos }}</td>
-      <td>{{ set_entrada_rendimentos }}</td>
-      <td>{{ out_entrada_rendimentos }}</td>
-      <td>{{ nov_entrada_rendimentos }}</td>
-      <td>{{ dez_entrada_rendimentos }}</td>
+        {% for entrada_rendimentos_realizado in entrada_rendimentos_realizado %}
+            <td> {{ entrada_rendimentos_realizado }} </td>
+        {% endfor %}
       <td>{{ total_rendimentos }}</td>
     </tr>
     <tr>
       <td><a href="{% url 'list_impostos' %}">(-) Impostos</a></td>
-      <td>{{ jan_impostos }}</td>
-      <td>{{ fev_impostos }}</td>
-      <td>{{ mar_impostos }}</td>
-      <td>{{ abr_impostos }}</td>
-      <td>{{ mai_impostos }}</td>
-      <td>{{ jun_impostos }}</td>
-      <td>{{ jul_impostos }}</td>
-      <td>{{ ago_impostos }}</td>
-      <td>{{ set_impostos }}</td>
-      <td>{{ out_impostos }}</td>
-      <td>{{ nov_impostos }}</td>
-      <td>{{ dez_impostos }}</td>
+        {% for saida_imposto_realizado in saida_imposto_realizado %}
+            <td> {{ saida_imposto_realizado }} </td>
+        {% endfor %}
       <td>{{ total_impostos }}</td>
     </tr>
       <tr class="table-primary">
       <th scope="row">Custos</th>
-      <td>{{ jan_total_custo }}</td>
-      <td>{{ fev_total_custo }}</td>
-      <td>{{ mar_total_custo }}</td>
-      <td>{{ abr_total_custo }}</td>
-      <td>{{ mai_total_custo }}</td>
-      <td>{{ jun_total_custo }}</td>
-      <td>{{ jul_total_custo }}</td>
-      <td>{{ ago_total_custo }}</td>
-      <td>{{ set_total_custo }}</td>
-      <td>{{ out_total_custo }}</td>
-      <td>{{ nov_total_custo }}</td>
-      <td>{{ dez_total_custo }}</td>
+        {% for total_custo_realizado in total_custo_realizado %}
+            <td> {{ total_custo_realizado }} </td>
+        {% endfor %}
       <td>{{ total_custos }}</td>
     </tr>
     <tr>
       <td><a href="{% url 'list_custo_produtos' %}">(-) Custo de Produção</a></td>
-      <td>{{ jan_custo_producao }}</td>
-      <td>{{ fev_custo_producao }}</td>
-      <td>{{ mar_custo_producao }}</td>
-      <td>{{ abr_custo_producao }}</td>
-      <td>{{ mai_custo_producao }}</td>
-      <td>{{ jun_custo_producao }}</td>
-      <td>{{ jul_custo_producao }}</td>
-      <td>{{ ago_custo_producao }}</td>
-      <td>{{ set_custo_producao }}</td>
-      <td>{{ out_custo_producao }}</td>
-      <td>{{ nov_custo_producao }}</td>
-      <td>{{ dez_custo_producao }}</td>
+        {% for saida_custo_producao_realizado in saida_custo_producao_realizado %}
+            <td> {{ saida_custo_producao_realizado }} </td>
+        {% endfor %}
       <td>{{ total_custo }}</td>
     </tr>
     <tr>
       <td><a href="{% url 'list_transporte_correios' %}">(-) Transportes e Correios</a></td>
-      <td>{{ jan_transporte_correiros }}</td>
-      <td>{{ fev_transporte_correiros }}</td>
-      <td>{{ mar_transporte_correiros }}</td>
-      <td>{{ abr_transporte_correiros }}</td>
-      <td>{{ mai_transporte_correiros }}</td>
-      <td>{{ jun_transporte_correiros }}</td>
-      <td>{{ jul_transporte_correiros }}</td>
-      <td>{{ ago_transporte_correiros }}</td>
-      <td>{{ set_transporte_correiros }}</td>
-      <td>{{ out_transporte_correiros }}</td>
-      <td>{{ nov_transporte_correiros }}</td>
-      <td>{{ dez_transporte_correiros }}</td>
+        {% for saida_trans_correios_realizado in saida_trans_correios_realizado %}
+            <td> {{ saida_trans_correios_realizado }} </td>
+        {% endfor %}
       <td>{{ total_trans_correios }}</td>
     </tr>
     <tr>
       <td><a href="{% url 'list_devolucoes' %}">(-) Devoluções</a></td>
-      <td>{{ jan_devolucoes }}</td>
-      <td>{{ fev_devolucoes }}</td>
-      <td>{{ mar_devolucoes }}</td>
-      <td>{{ abr_devolucoes }}</td>
-      <td>{{ mai_devolucoes }}</td>
-      <td>{{ jun_devolucoes }}</td>
-      <td>{{ jul_devolucoes }}</td>
-      <td>{{ ago_devolucoes }}</td>
-      <td>{{ set_devolucoes }}</td>
-      <td>{{ out_devolucoes }}</td>
-      <td>{{ nov_devolucoes }}</td>
-      <td>{{ dez_devolucoes }}</td>
+        {% for saida_devolucoes_realizado in saida_devolucoes_realizado %}
+            <td> {{ saida_devolucoes_realizado }} </td>
+        {% endfor %}
       <td>{{ total_devolucoes }}</td>
     </tr>
     </tr>
       <tr class="table-primary">
       <th scope="row">Despesas</th>
-      <td>{{ jan_total_despesas }}</td>
-      <td>{{ fev_total_despesas }}</td>
-      <td>{{ mar_total_despesas }}</td>
-      <td>{{ abr_total_despesas }}</td>
-      <td>{{ mai_total_despesas }}</td>
-      <td>{{ jun_total_despesas }}</td>
-      <td>{{ jul_total_despesas }}</td>
-      <td>{{ ago_total_despesas }}</td>
-      <td>{{ set_total_despesas }}</td>
-      <td>{{ out_total_despesas }}</td>
-      <td>{{ nov_total_despesas }}</td>
-      <td>{{ dez_total_despesas }}</td>
+        {% for total_despesas_realizado in total_despesas_realizado %}
+            <td> {{ total_despesas_realizado }} </td>
+        {% endfor %}
       <td>{{ total_despesas }}</td>
     </tr>
       <td><a href="{% url 'list_desp_folha' %}">(-) Desp. Folha</a></td>
-      <td>{{ jan_despesas_folha }}</td>
-      <td>{{ fev_despesas_folha }}</td>
-      <td>{{ mar_despesas_folha }}</td>
-      <td>{{ abr_despesas_folha }}</td>
-      <td>{{ mai_despesas_folha }}</td>
-      <td>{{ jun_despesas_folha }}</td>
-      <td>{{ jul_despesas_folha }}</td>
-      <td>{{ ago_despesas_folha }}</td>
-      <td>{{ set_despesas_folha }}</td>
-      <td>{{ out_despesas_folha }}</td>
-      <td>{{ nov_despesas_folha }}</td>
-      <td>{{ dez_despesas_folha }}</td>
+        {% for saida_desp_folha_realizado in saida_desp_folha_realizado %}
+            <td> {{ saida_desp_folha_realizado }} </td>
+        {% endfor %}
+      <td>{{ total_impostos }}</td>
       <td>{{ total_folha }}</td>
     </tr>
       <td><a href="{% url 'list_desp_adm' %}">(-) Desp. Adm</a></td>
-      <td>({{ jan_despesas_adm }})</td>
-      <td>{{ fev_despesas_adm }}</td>
-      <td>{{ mar_despesas_adm }}</td>
-      <td>{{ abr_despesas_adm }}</td>
-      <td>{{ mai_despesas_adm }}</td>
-      <td>{{ jun_despesas_adm }}</td>
-      <td>{{ jul_despesas_adm }}</td>
-      <td>{{ ago_despesas_adm }}</td>
-      <td>{{ set_despesas_adm }}</td>
-      <td>{{ out_despesas_adm }}</td>
-      <td>{{ nov_despesas_adm }}</td>
-      <td>{{ dez_despesas_adm }}</td>
+        {% for saida_desp_adm_realizado in saida_desp_adm_realizado %}
+            <td> {{ saida_desp_adm_realizado }} </td>
+        {% endfor %}
       <td>{{ total_adm }}</td>
     </tr>
       <td><a href="{% url 'list_mkt' %}">(-) Marketing</a></td>
-      <td>{{ jan_marketing }}</td>
-      <td>{{ fev_marketing }}</td>
-      <td>{{ mar_marketing }}</td>
-      <td>{{ abr_marketing }}</td>
-      <td>{{ mai_marketing }}</td>
-      <td>{{ jun_marketing }}</td>
-      <td>{{ jul_marketing }}</td>
-      <td>{{ ago_marketing }}</td>
-      <td>{{ set_marketing }}</td>
-      <td>{{ out_marketing }}</td>
-      <td>{{ nov_marketing }}</td>
-      <td>{{ dez_marketing }}</td>
+        {% for saida_mkt_realizado in saida_mkt_realizado %}
+            <td> {{ saida_mkt_realizado }} </td>
+        {% endfor %}
       <td>{{ total_marketing }}</td>
     </tr>
       <td><a href="{% url 'list_tel_fix_mov' %}">(-) Telefonia Fixa e Movel</a></td>
-      <td>{{ jan_tel_mov_fix }}</td>
-      <td>{{ fev_tel_mov_fix }}</td>
-      <td>{{ mar_tel_mov_fix }}</td>
-      <td>{{ abr_tel_mov_fix }}</td>
-      <td>{{ mai_tel_mov_fix }}</td>
-      <td>{{ jun_tel_mov_fix }}</td>
-      <td>{{ jul_tel_mov_fix }}</td>
-      <td>{{ ago_tel_mov_fix }}</td>
-      <td>{{ set_tel_mov_fix }}</td>
-      <td>{{ out_tel_mov_fix }}</td>
-      <td>{{ nov_tel_mov_fix }}</td>
-      <td>{{ dez_tel_mov_fix }}</td>
+        {% for saida_tel_realizado in saida_tel_realizado %}
+            <td> {{ saida_tel_realizado }} </td>
+        {% endfor %}
       <td>{{ total_tel_fx_mv }}</td>
     </tr>
       <td><a href="{% url 'list_desp_ti' %}">(-) Despesas de TI</a></td>
-      <td>{{ jan_deso_ti }}</td>
-      <td>{{ fev_deso_ti }}</td>
-      <td>{{ mar_deso_ti }}</td>
-      <td>{{ abr_deso_ti }}</td>
-      <td>{{ mai_deso_ti }}</td>
-      <td>{{ jun_deso_ti }}</td>
-      <td>{{ jul_deso_ti }}</td>
-      <td>{{ ago_deso_ti }}</td>
-      <td>{{ set_deso_ti }}</td>
-      <td>{{ out_deso_ti }}</td>
-      <td>{{ nov_deso_ti }}</td>
-      <td>{{ dez_deso_ti }}</td>
+        {% for saida_desp_ti_realizado in saida_desp_ti_realizado %}
+            <td> {{ saida_desp_ti_realizado }} </td>
+        {% endfor %}
       <td>{{ total_desp_ti }}</td>
     </tr>
       <td><a href="{% url 'list_tx_juros' %}">(-) Taxa/Juros</a></td>
-      <td>{{ jan_tax_juros }}</td>
-      <td>{{ fev_tax_juros }}</td>
-      <td>{{ mar_tax_juros }}</td>
-      <td>{{ abr_tax_juros }}</td>
-      <td>{{ mai_tax_juros }}</td>
-      <td>{{ jun_tax_juros }}</td>
-      <td>{{ jul_tax_juros }}</td>
-      <td>{{ ago_tax_juros }}</td>
-      <td>{{ set_tax_juros }}</td>
-      <td>{{ out_tax_juros }}</td>
-      <td>{{ nov_tax_juros }}</td>
-      <td>{{ dez_tax_juros }}</td>
+        {% for saida_tx_juros_realizado in saida_tx_juros_realizado %}
+            <td> {{ saida_tx_juros_realizado }} </td>
+        {% endfor %}
+      <td>{{ total_desp_ti }}</td>
       <td>{{ total_tx_jur }}</td>
     </tr>
     <tr class="table-secondary">
       <th scope="row">Fluxo de Caixa</th>
-      <td>{{ jan_fluxo }}</td>
-      <td>{{ fev_fluxo }}</td>
-      <td>{{ mar_fluxo }}</td>
-      <td>{{ abr_fluxo }}</td>
-      <td>{{ mai_fluxo }}</td>
-      <td>{{ jun_fluxo }}</td>
-      <td>{{ jul_fluxo }}</td>
-      <td>{{ ago_fluxo }}</td>
-      <td>{{ set_fluxo }}</td>
-      <td>{{ out_fluxo }}</td>
-      <td>{{ nov_fluxo }}</td>
-      <td>{{ dez_fluxo }}</td>
-      <td>{{ total_fluxo_caixa }}</td>
+        {% for fluxo_de_caixa_realizado in fluxo_de_caixa_realizado %}
+            <td> {{ fluxo_de_caixa_realizado }} </td>
+        {% endfor %}
+      <td>{{ total_fluxo_caixa  }}</td>
     </tr>
   <tr class="table-secondary">
       <th scope="row">Queima Ou Sobra de Caixa</th>

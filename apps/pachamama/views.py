@@ -6,6 +6,8 @@ from django.views.generic import ListView
 from apps.pachamama.models import BaseCaixaRealizado
 
 
+
+@login_required
 def home_pachamama(request):
     return render(request, 'pachamama/index.html')
 

@@ -1,12 +1,16 @@
 import os
+from decouple import config
+from dj_database_url import parse as dburl
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = '6%dk(0m*d(1l+t^8r02l)gv_&hf&gn(zq&-*jmp%2ja7@gyq5p'
 
-DEBUG = True
+SECRET_KEY = config('SECRET_KEY')
 
-ALLOWED_HOSTS = []
+
+DEBUG = config('DEBUG', default=False, cast=bool)
+
+ALLOWED_HOSTS = ['*']
 
 
 
@@ -57,11 +61,10 @@ TEMPLATES = [
 WSGI_APPLICATION = 'manifesta.wsgi.application'
 
 
+default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'dbsqlite3')
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': config('DATABASE_URL', defaul=default_dburl, cast=dburl)
 }
 
 
@@ -93,4 +96,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'index'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

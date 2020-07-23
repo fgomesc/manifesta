@@ -13,12 +13,14 @@ from .views import home_pachamama,\
     MarketingList, \
     TelMovFixList, \
     DespTIList, \
-    TxJurosList
+    TxJurosList, \
+    resultado_pachamama
 
 
 
 urlpatterns = [
     path('', home_pachamama, name='home_pachamama'),
+    path('resultado', resultado_pachamama, name='resultado_pachamama'),
     path('fluxo-caixa/', fluxo_de_caixa_pachamama, name='fluxo_caixa_pachamama'),
     path('entrada-cartao-list', EntradaCartaoList.as_view(), name='list_entrada_cartao'),
     path('entrada-boleto-list', EntradaBoletoList.as_view(), name='list_entrada_boleto'),

@@ -5,11 +5,15 @@ from django.shortcuts import render
 from django.views.generic import ListView
 from apps.pachamama.models import BaseCaixaRealizado
 
-
-
 @login_required
 def home_pachamama(request):
     return render(request, 'pachamama/index.html')
+
+
+
+@login_required
+def resultado_pachamama(request):
+    return render(request, 'pachamama/resultado.html')
 
 
 
@@ -172,22 +176,23 @@ def fluxo_de_caixa_pachamama(request):
                                                                      entrada_rendimentos_realizado,
                                                                      saida_imposto_realizado)]
 
+
     total_custo_realizado = [(a + b + c) for a, b, c in zip(saida_custo_producao_realizado,
-                                                                   saida_trans_correios_realizado,
-                                                                   saida_devolucoes_realizado)]
+                                                            saida_trans_correios_realizado,
+                                                            saida_devolucoes_realizado)]
+
 
     total_despesas_realizado = [(a + b + c + d + e + f) for a, b, c, d, e, f in zip(saida_desp_folha_realizado,
-                                                                                           saida_desp_adm_realizado,
-                                                                                           saida_mkt_realizado,
-                                                                                           saida_tel_realizado,
-                                                                                           saida_desp_ti_realizado,
-                                                                                           saida_tx_juros_realizado)]
+                                                                                    saida_desp_adm_realizado,
+                                                                                    saida_mkt_realizado,
+                                                                                    saida_tel_realizado,
+                                                                                    saida_desp_ti_realizado,
+                                                                                    saida_tx_juros_realizado)]
+
 
     fluxo_de_caixa_realizado = [(a + b + c) for a, b, c in zip(total_receita_realizado,
                                                                total_custo_realizado,
                                                                total_despesas_realizado)]
-
-
 
 
 

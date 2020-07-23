@@ -174,7 +174,7 @@ def fluxo_de_caixa_pachamama(request):
 
     total_custo_realizado = [(a + b + c) for a, b, c in zip(saida_custo_producao_realizado,
                                                                    saida_trans_correios_realizado,
-                                                                   saida_devolucoes_realizado,)]
+                                                                   saida_devolucoes_realizado)]
 
     total_despesas_realizado = [(a + b + c + d + e + f) for a, b, c, d, e, f in zip(saida_desp_folha_realizado,
                                                                                            saida_desp_adm_realizado,

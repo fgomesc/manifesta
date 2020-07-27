@@ -20,7 +20,7 @@ class BaseVendasRealizadas(models.Model):
     situacao_faturamento_2 = models.CharField(max_length=240)
     cliente_faturamento_2 = models.CharField(max_length=240)
     pedido_vendas_2 = models.DecimalField(max_digits=7, decimal_places=2)
-    produto_2 = models.CharField(max_length=1000)
+    produto_2 = models.CharField(max_length=240)
     ano_faturamento_2 = models.DecimalField(max_digits=4, decimal_places=0)
     dia_faturamento_2 = models.DecimalField(max_digits=2, decimal_places=0)
     mes_faturamento_2 = models.DecimalField(max_digits=2, decimal_places=0)

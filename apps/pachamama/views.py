@@ -67,14 +67,14 @@ def resultado_pachamama(request):
 
     for mes in MES_PAGAMENTO:
         cartao_lan = int(BaseVendasRealizadas.objects.filter(situacao_faturamento_2=STATUS['status_1'],
-                                                         classificacao_resultado_faturamento_2=CLASSIFICACAO_RESULTADO['produtos'],
-                                                         mes_faturamento_2=mes,
-                                                         ano_faturamento_2='2020').aggregate(Sum('total_mercadoria_2'))['total_mercadoria_2__sum'])
+                                                             classificacao_resultado_faturamento_2=CLASSIFICACAO_RESULTADO['produtos'],
+                                                             mes_faturamento_2=mes,
+                                                             ano_faturamento_2='2020').aggregate(Sum('total_mercadoria_2'))['total_mercadoria_2__sum'])
         produtos.append(cartao_lan)
 
     # ( - ) Impostos
 
-    impostos = [(int(a * taxa_imposto)* (-1)) for a in produtos]
+    impostos = [(int(a * taxa_imposto) * (-1)) for a in produtos]
 
     # ( - ) Insumos
     for mes in MES_PAGAMENTO:

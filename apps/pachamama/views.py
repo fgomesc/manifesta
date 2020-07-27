@@ -33,7 +33,6 @@ def resultado_pachamama(request):
 
     CLASSIFICACAO_RESULTADO = {
         'produtos': '( + ) Produtos',
-        'frete': '(-) Frete',
     }
 
 

@@ -12,6 +12,18 @@ def home_pachamama(request):
 
 
 @login_required
+def vendas_pachamama(request):
+
+
+
+
+    return render(request, 'pachamama/vendas.html')
+
+
+
+
+
+@login_required
 def resultado_pachamama(request):
 
     STATUS = {

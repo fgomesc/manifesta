@@ -15,7 +15,8 @@ from .views import home_pachamama,\
     DespTIList, \
     TxJurosList, \
     resultado_pachamama, \
-    ProdutoList
+    ProdutoList, \
+    vendas_pachamama
 
 
 
@@ -38,6 +39,7 @@ urlpatterns = [
     path('tx-juros-list', TxJurosList.as_view(), name='list_tx_juros'),
 
     path('produto-list', ProdutoList.as_view(), name='list_produto'),
+    path('vendas', vendas_pachamama, name='vendas_pachamama'),
 
 
 

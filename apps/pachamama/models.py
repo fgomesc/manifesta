@@ -19,12 +19,12 @@ class BaseCaixaRealizado(models.Model):
 class BaseVendasRealizadas(models.Model):
     situacao_faturamento_2 = models.CharField(max_length=240)
     cliente_faturamento_2 = models.CharField(max_length=1000)
-    pedido_vendas_2 = models.DecimalField(max_digits=100000, decimal_places=0)
+    pedido_vendas_2 = models.DecimalField(max_digits=10000, decimal_places=2)
     produto_2 = models.CharField(max_length=1000)
     ano_faturamento_2 = models.DecimalField(max_digits=4, decimal_places=0)
     dia_faturamento_2 = models.DecimalField(max_digits=2, decimal_places=0)
     mes_faturamento_2 = models.DecimalField(max_digits=2, decimal_places=0)
-    quantidade_2 = models.DecimalField(max_digits=100, decimal_places=0)
+    quantidade_2 = models.DecimalField(max_digits=10000, decimal_places=2)
     total_mercadoria_2 = models.DecimalField(max_digits=10000, decimal_places=2)
     desconto_2 = models.DecimalField(max_digits=10000, decimal_places=2)
     valor_icms_st_2 = models.DecimalField(max_digits=10000, decimal_places=2)
@@ -38,8 +38,8 @@ class BaseVendasRealizadas(models.Model):
     valor_cofins_2 = models.DecimalField(max_digits=10000, decimal_places=2)
     classificacao_resultado_faturamento_2 = models.CharField(max_length=240)
     data_faturamento_2 = models.DateField()
-    valor_cmv_unit_2 = models.DecimalField(max_digits=1000, decimal_places=2)
-    valor_cmv_total_2 = models.DecimalField(max_digits=1000, decimal_places=2)
+    valor_cmv_unit_2 = models.DecimalField(max_digits=10000, decimal_places=2)
+    valor_cmv_total_2 = models.DecimalField(max_digits=10000, decimal_places=2)
 
 
     def __str__(self):

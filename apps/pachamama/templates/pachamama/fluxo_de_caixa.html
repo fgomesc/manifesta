@@ -48,21 +48,21 @@
         {% for total_receita_realizado in total_receita_realizado %}
             <td> {{ total_receita_realizado }} </td>
         {% endfor %}
-      <td>{{ total_receita }}</td>
+      <td>{{ total_receitas }}</td>
     </tr>
     <tr>
       <td><a href="{% url 'list_entrada_cartao' %}">(+) Cartão</a></td>
         {% for entrada_cartao_realizado in entrada_cartao_realizado %}
             <td> {{ entrada_cartao_realizado }} </td>
         {% endfor %}
-      <td></td>
+      <td>{{ total_cartao_realizado }}</td>
     </tr>
     <tr>
       <td><a href="{% url 'list_entrada_boleto' %}">(+) Boleto</a></td>
         {% for entrada_boleto_realizado in entrada_boleto_realizado %}
             <td> {{ entrada_boleto_realizado }} </td>
         {% endfor %}
-      <td>-</td>
+      <td>{{ total_boletos }}</td>
     </tr>
     <tr>
       <td><a href="{% url 'list_entrada_rendimentos' %}">(+) Rendimentos</a></td>
@@ -83,14 +83,14 @@
         {% for total_custo_realizado in total_custo_realizado %}
             <td> {{ total_custo_realizado }} </td>
         {% endfor %}
-      <td>{{ total_custos }}</td>
+      <td>{{ total_custo }}</td>
     </tr>
     <tr>
       <td><a href="{% url 'list_custo_produtos' %}">(-) Custo de Produção</a></td>
         {% for saida_custo_producao_realizado in saida_custo_producao_realizado %}
             <td> {{ saida_custo_producao_realizado }} </td>
         {% endfor %}
-      <td>{{ total_custo }}</td>
+      <td>{{ total_custo_produto }}</td>
     </tr>
     <tr>
       <td><a href="{% url 'list_transporte_correios' %}">(-) Transportes e Correios</a></td>
@@ -112,20 +112,19 @@
         {% for total_despesas_realizado in total_despesas_realizado %}
             <td> {{ total_despesas_realizado }} </td>
         {% endfor %}
-      <td>{{ total_despesas }}</td>
+      <td>{{ total_desp }}</td>
     </tr>
       <td><a href="{% url 'list_desp_folha' %}">(-) Desp. Folha</a></td>
         {% for saida_desp_folha_realizado in saida_desp_folha_realizado %}
             <td> {{ saida_desp_folha_realizado }} </td>
         {% endfor %}
-      <td>{{ total_impostos }}</td>
       <td>{{ total_folha }}</td>
     </tr>
       <td><a href="{% url 'list_desp_adm' %}">(-) Desp. Adm</a></td>
         {% for saida_desp_adm_realizado in saida_desp_adm_realizado %}
             <td> {{ saida_desp_adm_realizado }} </td>
         {% endfor %}
-      <td>{{ total_adm }}</td>
+      <td>{{ total_desp_adm }}</td>
     </tr>
       <td><a href="{% url 'list_mkt' %}">(-) Marketing</a></td>
         {% for saida_mkt_realizado in saida_mkt_realizado %}
@@ -137,7 +136,7 @@
         {% for saida_tel_realizado in saida_tel_realizado %}
             <td> {{ saida_tel_realizado }} </td>
         {% endfor %}
-      <td>{{ total_tel_fx_mv }}</td>
+      <td>{{ total_tel }}</td>
     </tr>
       <td><a href="{% url 'list_desp_ti' %}">(-) Despesas de TI</a></td>
         {% for saida_desp_ti_realizado in saida_desp_ti_realizado %}
@@ -149,8 +148,7 @@
         {% for saida_tx_juros_realizado in saida_tx_juros_realizado %}
             <td> {{ saida_tx_juros_realizado }} </td>
         {% endfor %}
-      <td>{{ total_desp_ti }}</td>
-      <td>{{ total_tx_jur }}</td>
+      <td>{{ total_tx_juros }}</td>
     </tr>
     <tr class="table-secondary">
       <th scope="row">Fluxo de Caixa</th>

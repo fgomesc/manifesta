@@ -14,7 +14,8 @@ from .views import home_pachamama,\
     TelMovFixList, \
     DespTIList, \
     TxJurosList, \
-    resultado_pachamama
+    resultado_pachamama, \
+    ProdutoList
 
 
 
@@ -35,5 +36,9 @@ urlpatterns = [
     path('tel-mov-fix-list', TelMovFixList.as_view(), name='list_tel_fix_mov'),
     path('desp-ti-list', DespTIList.as_view(), name='list_desp_ti'),
     path('tx-juros-list', TxJurosList.as_view(), name='list_tx_juros'),
+
+    path('produto-list', ProdutoList.as_view(), name='list_produto'),
+
+
 
 ]

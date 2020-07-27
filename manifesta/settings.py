@@ -27,6 +27,7 @@ INSTALLED_APPS = [
 
     'apps.core',
     'apps.pachamama',
+    'apps.prana',
 ]
 
 MIDDLEWARE = [
@@ -98,3 +99,5 @@ STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = 'index'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 1000000

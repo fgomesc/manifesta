@@ -1,0 +1,58 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+  <a class="navbar-brand" href="#">Pachamama</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" href="{% url 'fluxo_caixa_pachamama' %}">Fluxo de Caixa</a>
+      <a class="nav-item nav-link" href="{% url 'resultado_pachamama' %}">Demonstração de Resultado</a>
+    </div>
+  </div>
+</nav>
+<br>
+<h2>Base</h2>
+<br>
+<p>
+    <a class="btn btn-info" href="{% url 'resultado_pachamama' %}" role="button">Voltar</a>
+</p>
+<br>
+<br>
+<br>
+     <table class="table" id="book-table">
+        <thead>
+          <tr>
+            <th>Cliente</th>
+            <th>Produto</th>
+            <th>Data</th>
+            <th>Quantidade</th>
+            <th>Valor Em Produtos</th>
+            <th>CMV Unitário</th>
+            <th>CMV Total</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          {% for basevendasrealizadas in object_list %}
+            <tr>
+              <td>{{ basevendasrealizadas.cliente_faturamento_2 }}</td>
+              <td>{{ basevendasrealizadas.produto_2 }}</td>
+              <td>{{ basevendasrealizadas.data_faturamento_2 }}</td>
+              <td>{{ basevendasrealizadas.quantidade_2 }}</td>
+              <td>{{ basevendasrealizadas.total_mercadoria_2 }}</td>
+              <td>{{ basevendasrealizadas.valor_cmv_unit_2 }}</td>
+              <td>{{ basevendasrealizadas.valor_cmv_total_2 }}</td>
+            </tr>
+          {% empty %}
+            <tr>
+              <td colspan="7" class="text-center bg-warning">No book</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+{% endblock content %}

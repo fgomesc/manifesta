@@ -38,6 +38,8 @@ class BaseVendasRealizadas(models.Model):
     valor_cofins_2 = models.DecimalField(max_digits=10000, decimal_places=2)
     classificacao_resultado_faturamento_2 = models.CharField(max_length=240)
     data_faturamento_2 = models.DateField()
+    valor_cmv_unit_2 = models.DecimalField(max_digits=1000, decimal_places=2)
+    valor_cmv_total_2 = models.DecimalField(max_digits=1000, decimal_places=2)
 
 
     def __str__(self):

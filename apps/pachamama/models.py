@@ -25,7 +25,7 @@ class BaseVendasRealizadas(models.Model):
     dia_faturamento_2 = models.DecimalField(max_digits=2, decimal_places=0)
     mes_faturamento_2 = models.DecimalField(max_digits=2, decimal_places=0)
     quantidade_2 = models.DecimalField(max_digits=7, decimal_places=2)
-    total_mercadoria_2 = models.DecimalField(max_digits=7, decimal_places=2)
+    total_mercadoria_2 = models.DecimalField(max_digits=7, decimal_places=2, blank=True)
     desconto_2 = models.DecimalField(max_digits=7, decimal_places=2)
     valor_icms_st_2 = models.DecimalField(max_digits=7, decimal_places=2)
     frete_2 = models.DecimalField(max_digits=7, decimal_places=2)

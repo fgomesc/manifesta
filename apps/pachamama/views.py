@@ -69,7 +69,10 @@ def resultado_pachamama(request):
                                                              classificacao_resultado_faturamento_2=CLASSIFICACAO_RESULTADO['produtos'],
                                                              mes_faturamento_2=mes,
                                                              ano_faturamento_2='2020').aggregate(Sum('total_mercadoria_2'))['total_mercadoria_2__sum'])
-        produtos.append(cartao_lan)
+        if cartao_lan == None:
+            produtos.append(0)
+        else:
+            produtos.append(cartao_lan)
 
     # ( - ) Impostos
 
@@ -274,6 +277,7 @@ def fluxo_de_caixa_pachamama(request):
         cartao_lan = int(BaseCaixaRealizado.objects.filter(situacao=STATUS['status_1'],
                                                        classificacao_caixa=CLASSIFICACAO_CAIXA['entrada_cartao'],
                                                        mes_pagamento=mes, ano_pagamento='2020').aggregate(Sum('valor'))['valor__sum'])
+
         entrada_cartao_realizado.append(cartao_lan)
 
 
@@ -281,13 +285,17 @@ def fluxo_de_caixa_pachamama(request):
         cartao_lan = int(BaseCaixaRealizado.objects.filter(situacao=STATUS['status_1'],
                                                        classificacao_caixa=CLASSIFICACAO_CAIXA['entrada_boleto'],
                                                        mes_pagamento=mes, ano_pagamento='2020').aggregate(Sum('valor'))['valor__sum'])
+
         entrada_boleto_realizado.append(cartao_lan)
+
+
 
 
     for mes in MES_PAGAMENTO:
         cartao_lan = int(BaseCaixaRealizado.objects.filter(situacao=STATUS['status_1'],
                                                        classificacao_caixa=CLASSIFICACAO_CAIXA['rendimentos'],
                                                        mes_pagamento=mes, ano_pagamento='2020').aggregate(Sum('valor'))['valor__sum'])
+
         entrada_rendimentos_realizado.append(cartao_lan)
 
 
@@ -312,6 +320,7 @@ def fluxo_de_caixa_pachamama(request):
         cartao_lan = int(BaseCaixaRealizado.objects.filter(situacao=STATUS['status_1'],
                                                        classificacao_caixa=CLASSIFICACAO_CAIXA['trans_correrios'],
                                                        mes_pagamento=mes, ano_pagamento='2020').aggregate(Sum('valor'))['valor__sum'])
+
         saida_trans_correios_realizado.append(cartao_lan)
 
 
@@ -319,6 +328,7 @@ def fluxo_de_caixa_pachamama(request):
         cartao_lan = int(BaseCaixaRealizado.objects.filter(situacao=STATUS['status_1'],
                                                        classificacao_caixa=CLASSIFICACAO_CAIXA['devolucoes'],
                                                        mes_pagamento=mes, ano_pagamento='2020').aggregate(Sum('valor'))['valor__sum'])
+
         saida_devolucoes_realizado.append(cartao_lan)
 
 
@@ -329,6 +339,8 @@ def fluxo_de_caixa_pachamama(request):
         cartao_lan = int(BaseCaixaRealizado.objects.filter(situacao=STATUS['status_1'],
                                                        classificacao_caixa=CLASSIFICACAO_CAIXA['desp_folha'],
                                                        mes_pagamento=mes, ano_pagamento='2020').aggregate(Sum('valor'))['valor__sum'])
+
+
         saida_desp_folha_realizado.append(cartao_lan)
 
 

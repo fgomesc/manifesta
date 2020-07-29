@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Sum
 from django.shortcuts import render
+from django.utils.datetime_safe import date
 from django.views.generic import ListView
 from apps.pachamama.models import BaseCaixaRealizado, BaseVendasRealizadas
 
@@ -11,13 +12,67 @@ def home_pachamama(request):
 
 
 
+
+
+
+
+
+
 @login_required
 def vendas_pachamama(request):
 
+    queryset = BaseVendasRealizadas.objects.all()
+
+    mes_pagamento_vendas = sorted(set([int(obj.mes_faturamento_2) for obj in queryset]))
+    produtos_vendas_lista = sorted(set([str(obj.produto_2) for obj in queryset]))
+
+    periodo_vendas = []
+    produtos_vendas = []
+
+
+    meses = {
+        'Jan': 1,
+        'Fev': 2,
+        'Mar': 3,
+        'Abr': 4,
+        'Mai': 5,
+        'Jun': 6,
+        'Jul': 7,
+        'Ago': 8,
+        'Set': 9,
+        'Out': 10,
+        'Nov': 11,
+        'Dez': 12}
+
+    for i in meses:
+        data_1 = date.today()
+        data = '{}-{}'.format(i, data_1.year)
+        periodo_vendas.append(data)
+
+
+    STATUS = {
+        'status_1': 'Conciliado'
+    }
+
+    CLASSIFICACAO_RESULTADO = {
+        'produtos': '( + ) Produtos',
+    }
 
 
 
-    return render(request, 'pachamama/vendas.html')
+    for mes in mes_pagamento_vendas:
+        cartao_lan = int(BaseVendasRealizadas.objects.filter(situacao_faturamento_2=STATUS['status_1'],
+                                                 classificacao_resultado_faturamento_2=CLASSIFICACAO_RESULTADO[
+                                                     'produtos'],
+                                                 mes_faturamento_2=mes,
+                                                 ano_faturamento_2='2020').aggregate(Sum('total_mercadoria_2'))['total_mercadoria_2__sum'])
+
+        produtos_vendas.append(cartao_lan)
+
+
+    return render(request, 'pachamama/vendas.html', {'produtos_vendas': produtos_vendas,
+                                                     'periodo_vendas': periodo_vendas,
+                                                     'produtos_vendas_lista': produtos_vendas_lista})
 
 
 
@@ -25,6 +80,18 @@ def vendas_pachamama(request):
 
 @login_required
 def resultado_pachamama(request):
+
+    # -------->>> Nova Versao
+    queryset = BaseVendasRealizadas.objects.all()
+
+    MES_PAGAMENTO_NOVO = sorted(set([int(obj.mes_faturamento_2) for obj in queryset]))
+
+
+
+
+
+    # --------->>> Versao Anteiga
+
 
     STATUS = {
         'status_1': 'Conciliado'
@@ -36,20 +103,7 @@ def resultado_pachamama(request):
     }
 
 
-    MES_PAGAMENTO = {
-        '1': 1,
-        '2': 2,
-        '3': 3,
-        '4': 4,
-        '5': 5,
-        '6': 6,
-        '7': 7,
-        '8': 8,
-        '9': 9,
-        '10': 10,
-        '11': 11,
-        '12': 12,
-    }
+
 
     taxa_imposto = 0.083
 
@@ -61,10 +115,17 @@ def resultado_pachamama(request):
     marketing = []
     consul_asse = []
     demais_desp = []
+    periodo = []
+
+    for i in range(1, 13):
+        data_1 = date.today()
+        data = '{}-{}'.format(i, data_1.year)
+        periodo.append(data)
+
 
     # ( + ) Produtos
 
-    for mes in MES_PAGAMENTO:
+    for mes in MES_PAGAMENTO_NOVO:
         cartao_lan = int(BaseVendasRealizadas.objects.filter(situacao_faturamento_2=STATUS['status_1'],
                                                              classificacao_resultado_faturamento_2=CLASSIFICACAO_RESULTADO['produtos'],
                                                              mes_faturamento_2=mes,
@@ -79,7 +140,7 @@ def resultado_pachamama(request):
     impostos = [(int(a * taxa_imposto) * (-1)) for a in produtos]
 
     # ( - ) Insumos
-    for mes in MES_PAGAMENTO:
+    for mes in MES_PAGAMENTO_NOVO:
         cartao_lan = int(BaseVendasRealizadas.objects.filter(situacao_faturamento_2=STATUS['status_1'],
                                                              classificacao_resultado_faturamento_2=CLASSIFICACAO_RESULTADO['produtos'],
                                                              mes_faturamento_2=mes,
@@ -87,7 +148,7 @@ def resultado_pachamama(request):
         insumos.append(cartao_lan)
 
     # ( - ) Frete
-    for mes in MES_PAGAMENTO:
+    for mes in MES_PAGAMENTO_NOVO:
         cartao_lan = int(BaseCaixaRealizado.objects.filter(situacao=STATUS['status_1'],
                                                            classificacao_caixa='( - ) Transportes e Correios',
                                                            mes_pagamento=mes,
@@ -96,7 +157,7 @@ def resultado_pachamama(request):
 
 
     # ( - ) Folha
-    for mes in MES_PAGAMENTO:
+    for mes in MES_PAGAMENTO_NOVO:
         cartao_lan = int(BaseCaixaRealizado.objects.filter(situacao=STATUS['status_1'],
                                                            classificacao_caixa='( - ) Despesas de Folha',
                                                            mes_pagamento=mes,
@@ -105,7 +166,7 @@ def resultado_pachamama(request):
 
 
     # ( - ) Ocupação
-    for mes in MES_PAGAMENTO:
+    for mes in MES_PAGAMENTO_NOVO:
         cartao_lan = int(BaseCaixaRealizado.objects.filter(situacao=STATUS['status_1'],
                                                            classificacao_caixa='( -  ) Despesas Administrativas',
                                                            mes_pagamento=mes,
@@ -114,7 +175,7 @@ def resultado_pachamama(request):
 
 
     # ( - ) Marketing
-    for mes in MES_PAGAMENTO:
+    for mes in MES_PAGAMENTO_NOVO:
         cartao_lan = int(BaseCaixaRealizado.objects.filter(situacao=STATUS['status_1'],
                                                            classificacao_caixa='( - ) Marketing',
                                                            mes_pagamento=mes,
@@ -122,7 +183,7 @@ def resultado_pachamama(request):
         marketing.append(cartao_lan)
 
     # ( - ) Consultoria e Assessoria
-    for mes in MES_PAGAMENTO:
+    for mes in MES_PAGAMENTO_NOVO:
         cartao_lan = int(BaseCaixaRealizado.objects.filter(situacao=STATUS['status_1'],
                                                            classificacao_caixa='( - ) Telefonia Fixa e Móvel',
                                                            mes_pagamento=mes,
@@ -134,7 +195,7 @@ def resultado_pachamama(request):
         consul_asse.append(cartao_lan)
 
     # ( - ) Demais Despesas
-    for mes in MES_PAGAMENTO:
+    for mes in MES_PAGAMENTO_NOVO:
         cartao_lan = int(BaseCaixaRealizado.objects.filter(situacao=STATUS['status_1'],
                                                            classificacao_caixa='( - ) Taxas/Juros',
                                                            mes_pagamento=mes,
@@ -206,7 +267,8 @@ def resultado_pachamama(request):
                                                         'total_marketing': total_marketing,
                                                         'total_consul_asse': total_consul_asse,
                                                         'total_demais_desp': total_demais_desp,
-                                                        'total_ebitda': total_ebitda})
+                                                        'total_ebitda': total_ebitda,
+                                                        'periodo': periodo})
 
 class ProdutoList(LoginRequiredMixin, ListView):
     model = BaseVendasRealizadas

@@ -2,22 +2,30 @@
 
 {% block content %}
 
-<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-  <a class="navbar-brand" href="#">Pachamama</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link" href="{% url 'fluxo_caixa_pachamama' %}">Fluxo de Caixa</a>
-      <a class="nav-item nav-link" href="{% url 'resultado_pachamama' %}">Demonstração de Resultado</a>
-    </div>
-  </div>
-</nav>
+
 
 
 <br>
 <h2>Vendas</h2>
 <br>
 
+<br>
+<br>
+<table class="table">
+  <thead>
+    <tr class="table-success">
+      <th scope="col">Periodo</th>
+        {% for periodo_vendas in periodo_vendas %}
+            <th scope="col"> {{ periodo_vendas }} </th>
+        {% endfor %}
+      <th scope="col">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for produtos_vendas_lista in produtos_vendas_lista %}
+    <tr class="table-primary">
+        <td><a href="">{{ produtos_vendas_lista }}</a></td>
+  {% endfor %}
+    </tr>
+</table>
 {% endblock content %}

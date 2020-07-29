@@ -2,18 +2,7 @@
 
 {% block content %}
 
-<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-  <a class="navbar-brand" href="#">Pachamama</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link" href="{% url 'fluxo_caixa_pachamama' %}">Fluxo de Caixa</a>
-      <a class="nav-item nav-link" href="{% url 'resultado_pachamama' %}">Demonstração de Resultado</a>
-    </div>
-  </div>
-</nav>
+
 
 
 <br>
@@ -26,18 +15,9 @@
   <thead>
     <tr class="table-success">
       <th scope="col">Periodo</th>
-      <th scope="col">Jan/20</th>
-      <th scope="col">Fev/20</th>
-      <th scope="col">Mar/20</th>
-      <th scope="col">Abr/20</th>
-      <th scope="col">Mai/20</th>
-      <th scope="col">Jun/20</th>
-      <th scope="col">Jul/20</th>
-      <th scope="col">Ago/20</th>
-      <th scope="col">Set/20</th>
-      <th scope="col">Out/20</th>
-      <th scope="col">Nov/20</th>
-      <th scope="col">Dez/20</th>
+        {% for periodo in periodo %}
+            <th scope="col"> {{ periodo }} </th>
+        {% endfor %}
       <th scope="col">Total</th>
     </tr>
   </thead>

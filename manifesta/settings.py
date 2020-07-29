@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'apps.core',
     'apps.pachamama',
     'apps.prana',
+    'apps.cadastro_usuario',
 ]
 
 MIDDLEWARE = [

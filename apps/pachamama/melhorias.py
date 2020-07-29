@@ -1,21 +1,25 @@
-from django.core.serializers import json
-from django.shortcuts import render
+from datetime import date
 
-from apps.pachamama.models import BaseVendasRealizadas
+periodo_vendas = []
+
+meses = {
+    'Jan': 1,
+    'Fev': 2,
+    'Mar': 3,
+    'Abr': 4,
+    'Mai': 5,
+    'Jun': 6,
+    'Jul': 7,
+    'Ago': 8,
+    'Set': 9,
+    'Out': 10,
+    'Nov': 11,
+    'Dez': 12}
+
+for i in meses:
+    data_1 = date.today()
+    data = '{}-{}'.format(i, data_1.year)
+    periodo_vendas.append(data)
 
 
-def vendas_pachamama(request):
-
-    queryset = BaseVendasRealizadas.objects.all()
-    mes = [int(obj.mes_faturamento_2) for obj in queryset]
-    valor = [int(obj.total_mercadoria_2) for obj in queryset]
-
-    context ={
-
-        'mes': json.dumps(mes),
-        'valor': json.dumps(valor),
-    }
-
-
-    return render(request, 'pachamama/vendas.html', context)
-
+print(periodo_vendas)

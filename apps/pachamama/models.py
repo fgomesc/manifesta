@@ -3,7 +3,7 @@ from django.db import models
 
 class BaseCaixaRealizado(models.Model):
     situacao = models.CharField(max_length=240, null=True, blank=True, default=0)
-    classificacao_caixa = models.CharField(max_length=240, default=0)
+    classificacao_caixa = models.CharField(max_length=240, default='')
     dia_pagamento = models.DecimalField(max_digits=2, decimal_places=0, default=0)
     mes_pagamento = models.DecimalField(max_digits=2, decimal_places=0, default=0)
     ano_pagamento = models.DecimalField(max_digits=4, decimal_places=0, default=0)

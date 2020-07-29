@@ -1,7 +1,7 @@
 from django.db.models import Sum
 from django.shortcuts import render
 from django.utils.datetime_safe import date
-from .models import BaseVendasRealizadas
+from apps.pachamama.models import BaseVendasRealizadas
 
 
 def vendas_pachamama(request):

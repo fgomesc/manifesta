@@ -22,10 +22,11 @@
     </tr>
   </thead>
   <tbody>
-    {% for produtos_vendas_lista in produtos_vendas_lista %}
-      <tr>
-          <td><a href="">{{ produtos_vendas_lista }}</a></td>
-      </tr>
-    {% endfor %}
+  <tr class="table-primary">
+  {% for produtos_vendas_lista in produtos_vendas_lista %}
+    <tr class="table-primary">
+        <td><a href="">{{ produtos_vendas_lista }}</a></td>
+  {% endfor %}
+    </tr>
 </table>
 {% endblock content %}

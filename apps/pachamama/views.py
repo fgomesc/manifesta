@@ -6,15 +6,13 @@ from django.utils.datetime_safe import date
 from django.views.generic import ListView
 from apps.pachamama.models import BaseCaixaRealizado, BaseVendasRealizadas
 
+
+
+
+
 @login_required
 def home_pachamama(request):
     return render(request, 'pachamama/index.html')
-
-
-
-
-
-
 
 
 
@@ -42,7 +40,8 @@ def vendas_pachamama(request):
         'Set': 9,
         'Out': 10,
         'Nov': 11,
-        'Dez': 12}
+        'Dez': 12
+    }
 
     for i in meses:
         data_1 = date.today()
@@ -50,13 +49,9 @@ def vendas_pachamama(request):
         periodo_vendas.append(data)
 
 
-    STATUS = {
-        'status_1': 'Conciliado'
-    }
+    STATUS = {'status_1': 'Conciliado'}
 
-    CLASSIFICACAO_RESULTADO = {
-        'produtos': '( + ) Produtos',
-    }
+    CLASSIFICACAO_RESULTADO = {'produtos': '( + ) Produtos',}
 
 
 

@@ -15,7 +15,7 @@ odfpy==1.4.1
 openpyxl==3.0.4
 python-decouple==3.3
 pytz==2020.1
-PyYAML==5.3.1
+PyYAML==5.4
 sqlparse==0.3.1
 static3==0.7.0
 tablib==2.0.0
